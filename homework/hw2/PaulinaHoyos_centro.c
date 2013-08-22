@@ -24,8 +24,8 @@ main(int argc, char * argv []){
   fclose(im);
 
   /*calculate minumun phi*/
-  float min_phi = calculate_phi(X,Y,Z, n_lines, 1);
-  int p_min_phi =1;
+  float min_phi = calculate_phi(X,Y,Z, n_lines, 0);
+  int p_min_phi = 0;
   int i;
   for(i=1; i<n_lines; ++i){
     float ac_phi = calculate_phi(X,Y,Z, n_lines,i);
