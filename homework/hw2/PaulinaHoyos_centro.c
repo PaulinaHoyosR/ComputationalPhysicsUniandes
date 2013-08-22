@@ -17,9 +17,9 @@ main(int argc, char * argv []){
 
   /*give values to each Xi Yi Zi*/
   FILE *im = fopen(argv[1], "r");
-  int i;
-  for(i=0; i<n_lines; ++i){
-    fscanf(im, "%f %f %f", &X[i], &Y[i], &Z[i]);
+  int k;
+  for(k=0; k<n_lines; ++k){
+    fscanf(im, "%f %f %f", &X[k], &Y[k], &Z[k]);
   }
   fclose(im);
 
