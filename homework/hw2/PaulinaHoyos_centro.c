@@ -29,9 +29,7 @@ int  count_lines(char* file){
   FILE *in = fopen(file, "r");
 
   float a,b,c;
-  do{
-  n_lines= n_lines+1;
-  }while(fscanf(in, "%f %f %f", &a, &b, &c)==3);
+  while(fscanf(in, "%f %f %f", &a, &b, &c)==3)++n_lines;
 
   fclose(in);
 
