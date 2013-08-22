@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 int  count_lines(char* file);
-float calculate_phi(float *x, float *y, float *z, int size, int i );
+float calculate_phi(float *X, float *Y, float *Z, int size, int i );
 
 
 main(int argc, char * argv []){
@@ -23,12 +23,20 @@ main(int argc, char * argv []){
   }
   fclose(im);
 
-  /*calculate phi*/
+  /*calculate minumun phi*/
+  float min_phi = calculate_phi(X,Y,Z, n_lines, 1);
+  int p_min_phi =1;
+  int i;
+  for(i=1; i<n_lines; ++i){
+    float ac_phi = calculate_phi(X,Y,Z, n_lines,i);
+    if (ac_phi < min_phi){
+      min_phi = ac_phi;
+      p_min_phi = i;
+    }
+  }
 
-
-
- 
- printf("%d\n" , n_lines);
+  /*print the expected values*/
+  printf("%f %f %f\n", X[p_min_phi], Y[p_min_phi], Z[p_min_phi]);
 
   return 0;
 }
@@ -50,6 +58,7 @@ int  count_lines(char* file){
 }
 
 
+
 float calculate_phi(float *X, float *Y, float *Z, int size, int i ){
 
   float phi=0;
@@ -61,17 +70,15 @@ float calculate_phi(float *X, float *Y, float *Z, int size, int i ){
       float a = X[i]-X[j];
       float b = Y[i]-Y[j];
       float c = Z[i]-Y[j];
-      float d = powf (a,2.0);
-      float e = powf(b,2.0);
-      float f = powf(c,2.0);
+      float d = a*a;
+      float e = b*b;
+      float f = c*c;
       float g = sqrt(d+e+f);
-      float h = 1.0/g;
+      float h = (1.0/g);
 
-      phi = phi+h;
+      phi = (phi+h);
     }
   } 
 
 return phi
-
-
 }
