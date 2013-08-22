@@ -10,12 +10,22 @@ main(int argc, char * argv []){
   int n_lines = count_lines(argv[1]);
 
   /*arrays for the group of points in the three corrdinates*/
-  float *arr_x = (float *)malloc((n_lines) * sizeof(float));
-  float *arr_y = (float *)malloc((n_lines) * sizeof(float));
-  float *arr_z = (float *)malloc((n_lines) * sizeof(float));
+  float X[n_lines];
+  float Y[n_lines];
+  float Z[n_lines];
 
- int  n=count_lines(argv[1]) ;
- printf("%d\n", n);
+  /*give values to each Xi Yi Zi*/
+  FILE *im = fopen(argv[1], "r");
+  int i;
+  for(i=0; i<n_lines; ++i){
+    fscanf(im, "%f %f %f", &X[i], &Y[i], &Z[i]
+  }
+  fclose(im);
+
+
+
+ 
+ printf("%d\n" , n_lines);
 
   return 0;
 }
