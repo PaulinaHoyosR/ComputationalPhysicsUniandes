@@ -10,7 +10,7 @@ main(int argc, char * argv []){
 
   int n_lines = count_lines(argv[1]);
 
-  /*arrays for the group of points in the three corrdinates*/
+  /*arrays for the group of points in the three coordinates*/
   float X[n_lines];
   float Y[n_lines];
   float Z[n_lines];
@@ -58,7 +58,6 @@ int  count_lines(char* file){
 }
 
 
-
 float calculate_phi(float *X, float *Y, float *Z, int size, int i ){
 
   float phi=0;
@@ -73,12 +72,13 @@ float calculate_phi(float *X, float *Y, float *Z, int size, int i ){
       float d = a*a;
       float e = b*b;
       float f = c*c;
-      float g = sqrt(d+e+f);
-      float h = (1.0/g);
+      float g = d+e+f;
+      float h = sqrt(g);
+      float i = (1.0/g);
 
-      phi = (phi+h);
+      phi = (phi+i);
     }
   } 
 
-return phi
+  return -phi;
 }
