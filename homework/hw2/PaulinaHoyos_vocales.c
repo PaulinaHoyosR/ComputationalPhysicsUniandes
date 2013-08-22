@@ -13,14 +13,16 @@ int main(int argc, char* argv[]){
   int n_u=0;
 
   while(fscanf(in, "%c", &c)==1){
-    if((c=='a' || c=='A'){++n_a;}
-    else if (c=='e'  || c=='E' ){++n_e}
-    else if (c=='i'  || c=='I' ){++n_i}
-    else if (c=='o'  || c=='O' ){++n_o}
-    else if (c=='u'  || c=='U' ){++n_u}
-  }
-
+    if(c=='a' || c=='A'){++n_a;}
+    else if (c=='e'  || c=='E' ){++n_e;}
+    else if (c=='i'  || c=='I' ){++n_i;}
+    else if (c=='o'  || c=='O' ){++n_o;}
+    else if (c=='u'  || c=='U' ){++n_u;}
+    }
+    
     fclose(in);
+
+    printf("%c %d\n %c %d\n %c %d\n %c %d\n %c %d\n ", 'a', n_a, 'e', n_e, 'i', n_i, 'o', n_o, 'u', n_u);  
 
   return 0;
 }
