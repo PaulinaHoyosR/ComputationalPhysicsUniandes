@@ -20,5 +20,7 @@ int main(int argc, char* argv[]){
     else if (c=='u'  || c=='U' ){++n_u}
   }
 
+    fclose(in);
+
   return 0;
 }
