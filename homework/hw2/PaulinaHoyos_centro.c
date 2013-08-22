@@ -3,42 +3,42 @@
 #include <stdlib.h>
 
 int  count_lines(char* file);
-float calculate_phi(float *X, float *Y, float *Z, int size, int i );
+double  calculate_phi(double *X, double *Y, double *Z, int size, int i );
 
 
-main(int argc, char** argv){
+main(int argc, char* argv[]){
 
   int n_lines = count_lines(argv[1]);
  
 
   /*arrays for the group of points in the three coordinates*/
-  float X[n_lines];
-  float Y[n_lines];
-  float Z[n_lines];
+  double X[n_lines];
+  double Y[n_lines];
+  double Z[n_lines];
 
 
   /*give values to each Xi Yi Zi*/
   FILE *im = fopen(argv[1], "r");
   int k;
   for(k=0; k<n_lines; ++k){
-    fscanf(im, "%f %f %f\n", &(X[k]), &(Y[k]), &(Z[k]));
+    fscanf(im, "%lf %lf %lf\n", &(X[k]), &(Y[k]), &(Z[k]));
   }
   fclose(im);
 
   /*calculate minumun phi*/
-  float min_phi = calculate_phi(X,Y,Z, n_lines, 0);
+  double min_phi = calculate_phi(X,Y,Z, n_lines, 0);
   int p_min_phi = 0;
   int i;
   for(i=1; i<n_lines; ++i){
-    float ac_phi= calculate_phi(X,Y,Z, n_lines,i);
-    if (ac_phi > min_phi){
+    double ac_phi= calculate_phi(X,Y,Z, n_lines,i);
+    if (ac_phi < min_phi){
       min_phi = ac_phi;
       p_min_phi = i;
     }
   }
 
   /*print the expected values*/
-  printf("%f %f %f\n", X[p_min_phi], Y[p_min_phi], Z[p_min_phi]);
+  printf("%lf %lf %lf\n", X[p_min_phi], Y[p_min_phi], Z[p_min_phi]);
 
   return 0;
 }
@@ -51,8 +51,8 @@ int  count_lines(char* file){
 
   FILE *in = fopen(file, "r");
 
-  float a,b,c;
-  while(fscanf(in, "%f %f %f", &a, &b, &c)==3)++n_lines;
+  double a,b,c;
+  while(fscanf(in, "%lf %lf %lf", &a, &b, &c)==3)++n_lines;
 
   fclose(in);
 
@@ -60,25 +60,25 @@ int  count_lines(char* file){
 }
 
 
-float calculate_phi(float X[], float Y[], float Z[], int size, int i ){
+double calculate_phi(double X[], double Y[], double Z[], int size, int i ){
 
-  float phi=0;
+  double phi=0;
 
   int j;
   for(j=0; j<size; ++j){
     if (i != j){
 
-      float a = X[i]-X[j];
-      float b = Y[i]-Y[j];
-      float c = Z[i]-Z[j];
-      float d = a*a;
-      float e = b*b;
-      float f = c*c;
-      float g = d+e+f;
-      float h = sqrt(g);
-      float w = (1.0/g);
+      double a = X[i]-X[j];
+      double b = Y[i]-Y[j];
+      double c = Z[i]-Z[j];
+      double d = a*a;
+      double e = b*b;
+      double f = c*c;
+      double g = d+e+f;
+      double h = sqrt(g);
+      double w = (1.0/h);
 
-      phi=(phi+w);
+      phi=-(phi+w);
     }
   } 
 

@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-void calculate(int num);
-
-
+int calculate(int num);
 
 int main(int argc, char * argv[]){
 
+  int n = sizeof(argv[1])/(2*sizeof(char));
   int  num = atoi(argv[1]);
 
  if(argv[1][0] == '-'){printf("El número es negativo\n"); }
@@ -19,9 +19,66 @@ return 0;
 }
 
 
-void calculate(int num){
+int calculate(int num){
 
-  /*calculate prime numbers up to 10e6*/
+  /*lista con numeros primos*/
+  int* primos=malloc(10000*sizeof(int));
+  int num_primos=0;
 
-  printf("hola mundo\n");
+  int i;
+  for(i=2; i<10000; ++i){
+
+    int esprimo=1;
+    int k;
+    for(k=2; (k*k)<=i && esprimo==1; ++k){
+     
+      if((i%k) == 0){
+	  esprimo = 0;
+        }
+      }
+
+    if (esprimo == 1){
+	++num_primos;
+	primos[num_primos-1]=i;
+      }
   }
+  
+    int p;
+    for (p=0; p<10; p++){
+      printf("%d\n", primos[p]);
+    }
+
+
+    /*ver si el numero de entrada da*/
+    int m;
+    int func =1;
+    for(m=0; m<num_primos && func==1; m++){
+      int g = primos[m];
+      int h = num % g;
+      if(h == 0){
+	int r = num/g;
+        int esprimod=1;
+        int k;
+        for(k=2; (k*k)<=i && esprimod==1; ++k){
+     
+            if((i%k) == 0){
+	    esprimo = 0;
+            }
+         }
+
+        if (esprimo == 1){
+	++num_primos;
+	primos[num_primos-1]=i;
+      }
+
+      }
+
+
+    }
+
+
+
+ 
+  
+  return 0;
+}

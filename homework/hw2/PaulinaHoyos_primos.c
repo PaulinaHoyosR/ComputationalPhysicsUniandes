@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-void calculate(int num);
-
-
+int calculate(int num);
 
 int main(int argc, char * argv[]){
 
@@ -20,6 +19,38 @@ return 0;
 }
 
 
-void calculate(int num){
-  printf("hola mundo\n");
+int calculate(int num){
+
+  /*lista con numeros primos*/
+  int* primos=malloc(1000*sizeof(int));
+  int num_primos=0;
+
+  int i;
+  for(i=2; i<100; ++i){
+
+    int esprimo=1;
+    int k;
+    for(k=2; (k*k)<=i && esprimo==1; ++k){
+     
+      if((i%k) == 0){
+	  esprimo = 0;
+        }
+      }
+
+    if (esprimo == 1){
+	++num_primos;
+	primos[num_primos-1]=i;
+      }
   }
+  
+
+
+    int p;
+    for (p=0; p<10; p++){
+      printf("%d\n", primos[p]);
+    }
+
+ 
+  
+  return 0;
+}
