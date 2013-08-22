@@ -22,7 +22,7 @@ int main(int argc, char* argv[]){
     
     fclose(in);
 
-    printf("%c %d\n %c %d\n %c %d\n %c %d\n %c %d\n ", 'a', n_a, 'e', n_e, 'i', n_i, 'o', n_o, 'u', n_u);  
+    printf(" %c %d\n %c %d\n %c %d\n %c %d\n %c %d\n ", 'a', n_a, 'e', n_e, 'i', n_i, 'o', n_o, 'u', n_u);  
 
   return 0;
 }

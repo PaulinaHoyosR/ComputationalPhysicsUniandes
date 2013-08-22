@@ -8,14 +8,18 @@ float calculate_phi(float *X, float *Y, float *Z, int size, int i );
 
 main(int argc, char** argv){
 
-  int n_lines = count_lines(argv[1]);
+  int i,j,k,n_lines;
+  float* x;
+  float* y;
+  float* z;
+  float min_phi;
+  float ac_phi;
+
+  n_lines = count_lines(argv[1]);
  
-
-  /*arrays for the group of points in the three coordinates*/
-  float X[n_lines];
-  float Y[n_lines];
-  float Z[n_lines];
-
+  x = malloc(n_lines*sizeof(float));
+  y = malloc(n_lines*sizeof(float));
+  z = malloc(n_lines*sizeof(float));
 
   /*give values to each Xi Yi Zi*/
   FILE *im = fopen(argv[1], "r");
@@ -25,13 +29,43 @@ main(int argc, char** argv){
   }
   fclose(im);
 
-  /*calculate minumun phi*/
-  float min_phi = calculate_phi(X,Y,Z, n_lines, 0);
-  int p_min_phi = 0;
-  int i;
+  /*calculate minumun phi starting at first point*/
+ for (j=1; j<n_lines; ++j){
+      if (0 != j){
+
+      float a = X[0]-X[j];
+      float b = Y[0]-Y[j];
+      float c = Z[0]-Y[j];
+      float d = a*a;
+      float e = b*b;
+      float f = c*c;
+      float g = d+e+f;
+      float h = sqrt(g);
+      float i = (1.0/g);
+
+      min_phi = (phi+i);
+      }
+    }
+ 
   for(i=1; i<n_lines; ++i){
-    float ac_phi= calculate_phi(X,Y,Z, n_lines,i);
-    if (ac_phi > min_phi){
+    for (k=1; k<n_lines; ++k){
+      if (i != j){
+
+      float a = X[i]-X[k];
+      float b = Y[i]-Y[k];
+      float c = Z[i]-Y[k];
+      float d = a*a;
+      float e = b*b;
+      float f = c*c;
+      float g = d+e+f;
+      float h = sqrt(g);
+      float i = (1.0/g);
+
+      phi = (phi+i);
+      }
+    }
+    float ac_phi = calculate_phi(X,Y,Z, n_lines,i);
+    if (ac_phi >= min_phi){
       min_phi = ac_phi;
       p_min_phi = i;
     }
@@ -70,15 +104,15 @@ float calculate_phi(float X[], float Y[], float Z[], int size, int i ){
 
       float a = X[i]-X[j];
       float b = Y[i]-Y[j];
-      float c = Z[i]-Z[j];
+      float c = Z[i]-Y[j];
       float d = a*a;
       float e = b*b;
       float f = c*c;
       float g = d+e+f;
       float h = sqrt(g);
-      float w = (1.0/g);
+      float i = (1.0/g);
 
-      phi=(phi+w);
+      ++phi
     }
   } 
 
