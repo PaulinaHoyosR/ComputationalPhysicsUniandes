@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 int  count_lines(char* file);
+float calculate_phi(float *x, float *y, float *z, int size, int i );
 
 
 main(int argc, char * argv []){
@@ -21,6 +22,8 @@ main(int argc, char * argv []){
     fscanf(im, "%f %f %f", &X[i], &Y[i], &Z[i]);
   }
   fclose(im);
+
+  /*calculate phi*/
 
 
 
@@ -44,4 +47,31 @@ int  count_lines(char* file){
   fclose(in);
 
   return n_lines;
+}
+
+
+float calculate_phi(float *X, float *Y, float *Z, int size, int i ){
+
+  float phi=0;
+
+  int j;
+  for(j=0; j<size; ++j){
+    if (i != j){
+
+      float a = X[i]-X[j];
+      float b = Y[i]-Y[j];
+      float c = Z[i]-Y[j];
+      float d = powf (a,2.0);
+      float e = powf(b,2.0);
+      float f = powf(c,2.0);
+      float g = sqrt(d+e+f);
+      float h = 1.0/g;
+
+      phi = phi+h;
+    }
+  } 
+
+return phi
+
+
 }
