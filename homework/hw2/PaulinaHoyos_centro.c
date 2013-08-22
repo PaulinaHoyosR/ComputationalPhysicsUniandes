@@ -18,7 +18,7 @@ main(int argc, char * argv []){
   FILE *im = fopen(argv[1], "r");
   int i;
   for(i=0; i<n_lines; ++i){
-    fscanf(im, "%f %f %f", &X[i], &Y[i], &Z[i]
+    fscanf(im, "%f %f %f", &X[i], &Y[i], &Z[i]);
   }
   fclose(im);
 
