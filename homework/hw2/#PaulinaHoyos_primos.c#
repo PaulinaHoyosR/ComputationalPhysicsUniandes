@@ -22,11 +22,11 @@ return 0;
 int calculate(int num){
 
   /*lista con numeros primos*/
-  int* primos=malloc(10000*sizeof(int));
+  int* primos=malloc(100000*sizeof(int));
   int num_primos=0;
 
   int i;
-  for(i=2; i<10000; ++i){
+  for(i=2; i<100000; ++i){
 
     int esprimo=1;
     int k;
@@ -42,13 +42,9 @@ int calculate(int num){
 	primos[num_primos-1]=i;
       }
   }
+
+
   
-    int p;
-    for (p=0; p<10; p++){
-      printf("%d\n", primos[p]);
-    }
-
-
     /*ver si el numero de entrada da*/
     int m;
     int func =1;
@@ -61,24 +57,22 @@ int calculate(int num){
         int k;
         for(k=2; (k*k)<=i && esprimod==1; ++k){
      
-            if((i%k) == 0){
-	    esprimo = 0;
+            if((r%k) == 0){
+	    esprimod = 0;
             }
          }
 
-        if (esprimo == 1){
-	++num_primos;
-	primos[num_primos-1]=i;
+        if (esprimod == 1){
+	  func=2;	 
+          printf ("%d %d\n", g, r);
       }
+	else { printf("El número no se puede descomponer como factor de dos primos\n");}
 
+     
       }
 
 
     }
 
-
-
- 
-  
   return 0;
 }

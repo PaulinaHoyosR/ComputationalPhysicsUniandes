@@ -61,7 +61,7 @@ int  count_lines(char* file){
 
 
 double calculate_phi(double X[], double Y[], double Z[], int size, int i ){
-
+ 
   double phi=0;
 
   int j;
@@ -78,9 +78,9 @@ double calculate_phi(double X[], double Y[], double Z[], int size, int i ){
       double h = sqrt(g);
       double w = (1.0/h);
 
-      phi=-(phi+w);
+      phi=(phi+w);
     }
   } 
 
-  return phi;
+  return -phi;
 }
