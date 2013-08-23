@@ -69,15 +69,10 @@ int calculate(int num){
 	else { printf("El número no se puede descomponer como factor de dos primos\n");}
 
      
-      func=2;
       }
 
 
     }
 
-
-
- 
-  
   return 0;
 }
