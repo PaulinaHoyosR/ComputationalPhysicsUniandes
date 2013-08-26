@@ -16,7 +16,7 @@ num = int(sys.argv[1])
 if(num<0):
     print "El numero es negativo"
 elif(num>1000000):
-    print "El numero es mayor que 10e6"
+    print "El numero es mayor que 1e6"
 else:
     p = factor(num)
     if (len(p) == 2):
