@@ -1,0 +1,85 @@
+\documentclass{article}
+\title{Taller \#4. F\'isica Computacional / FISI 2025 \\Semestre 2013-II. \\ Profesor: Jaime E. Forero Romero}
+\date{Septiembre 10 2013}
+\begin{document}
+\maketitle
+
+{\bf Los dos programas con el c\'odigo de esta tarea deben ser subidos a la p\'agina de sicuaplus del curso como un \'unico archivo tar antes de las 1PM del Jueves 19 de Septiembre.}
+
+\begin{enumerate}
+
+
+\item (50 puntos) Escriba un programa en C que haga un fit de una
+  funci\'on polinomial $f(x)=\sum_{n=0}a_nx^n$ a una serie de puntos
+  $x_i, f_i$. El programa debe usar el formalismo matricial visto en
+  clase. 
+El programa debe compilarse con las librerias \verb"-lm -lgsl -lgslcblas".
+
+El nombre del c\'odigo fuente es \verb"NombreApellido_polinomio.c" y el programa debe poder ejecutarse de la siguiente manera:
+
+\begin{verbatim}
+./NombreApellido_polinomio.x [input_file] [degree]
+\end{verbatim}
+
+Donde el archivo \verb"input_file" contiene dos columnas y un numero
+indeterminado de filas. Cada fila corresponde a un par $x_i, f_i$,
+donde $1\leq i\leq N$, siendo $N$ el n\'umero total de puntos
+observados. \verb"degree" correspondo al grado del polinomio que se
+debe ajustar. Este debe ser un entero $>0$. 
+El output producido deben ser tantas l\'ineas como el grado del polinomio. Cada una de las l\'ineas corresponde al valor del coeficiente $a_n$. La \'ultima l\'inea corresponde al $\chi^2$ reducido del ajuste, definido como:
+
+\begin{equation}
+\chi^2 = \frac{1}{N}\sum_{i=0}^{N}(f_i - f(x_i))^2.
+\end{equation}
+
+De esta manera, un ejemplo de salida del programa es:
+
+\begin{verbatim}
+a_0 3.2
+a_1 1.4
+a_2 -0.4
+a_3 0.3
+chi2 12.0
+\end{verbatim}
+
+\item (50 puntos) Escriba un programa en C que haga un an\'alisis de
+  componentes principales del archivo prueba que se encuentra en el
+  repositorio \verb"ComputationalPhysicsUniandesData/" bajo el
+  directorio \verb"homework/hw_4/" con el nombre
+  \verb"sampled+ma0844az_1-1+_data.txt".  
+
+El programa debe compilarse con las librerias \verb"-lm -lgsl -lgslcblas".
+
+El nombre del c\'odigo fuente es \verb"NombreApellido_pca.c" y el
+programa debe poder ejecutarse de la siguiente manera: 
+
+\begin{verbatim}
+./NombreApellido_pca.x [filename]
+\end{verbatim}
+
+El archivo de entrada \verb"filename" corresponde a series de tiempo
+de un encefalograma tomado sobre un paciente real. Cada columna
+representa una se\~nal de un electrodo diferente, mientras que cada
+fila corresponde a un instante de tiempo. El n\'umero de columnas
+siempre sera el mismo que en el archivo de prueba   \verb"sampled+ma0844az_1-1+_data.txt".  
+
+El programa debe producir dos archivos de texto. El primero de nombre
+\verb"NombreApellido_eigenvalues.dat"donde todos los autovalores
+est\'an escritos. El segundo \verb"NombreApellido_eigenvectors.dat"
+donde est\'an escritos los 10 primeros autovectores (cada vector en una
+columna). El tercero de nombre
+\verb"NombreApellido_pca_chisquare.dat" donde se escribe el $\chi^2$
+entre cada se\~nal y la reconstrucci\'on correspondiente usando los 10
+primeros autovectores.
+
+
+\end{enumerate}
+
+Los valores de cada punto se reparten de la manera siguiente: $10$
+puntos por tener c\'odigo que compila. El resto de puntos se asignan
+por tener un programa que funciona correctamente con par\'ametros de
+entrada decididos por el profesor. Si el tiempo de ejecuci\'on de un
+programa es mayor a 12 horas, se califica con cero puntos el ejercicio
+correspondiente. 
+
+\end{document}

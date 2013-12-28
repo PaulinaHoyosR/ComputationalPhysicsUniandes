@@ -1,0 +1,105 @@
+\documentclass{article}
+\title{Taller \#5. F\'isica Computacional / FISI 2025 \\Semestre
+  2013-II. \\ Profesor: Jaime E. Forero Romero} 
+\date{Octubre 4, 2012}
+\begin{document}
+\maketitle
+
+{\bf Esta tarea debe resolverse por parejas (i.e. grupos de 2
+  personas) y debe estar en un repositorio de la cuenta de github de
+  uno de los miembros de cada equipo con un commit final hecho antes del
+  medio d\'ia del jueves 17 de Octubre del 2013. El esquelto del
+  c\'odigo debe estar en el repositorio antes del medio d\'ia del
+  jueves 10 Octubre  del 2013.}   
+
+El objetivo de la tarea es escribir un c\'odigo en Python (o en un
+notebook the IPython) y escribir un peque\~no informe sobre los
+siguientes puntos.
+
+\begin{enumerate}
+
+\item
+Dentro del repositorio de datos del curso en
+\verb" homework/hw_4/sampled+ma0844az_1-1+_data.txt"  se encuentran
+los datos de encefalogramas que ya se utilzaron en la clase anterior.
+
+\begin{enumerate}
+
+\item 
+El c\'odigo debe procesar los datos de cada encefalograma  para obtener una
+transformada de Fourier a partir de la definci\'on:
+\begin{equation}
+\hat{x}_{k} = \sum_{n=0}^{N-1}x_{n}\exp(-2\pi i k n/N), 
+\end{equation}
+donde $x_{n}$ es la serie de $N$ puntos en funci\'on del tiempo y los
+valores de $k$ corresponden a diferentes
+frecuencias. Espec\'ificamente el programa debe calcular las
+frecuencias y los n\'umeros complejos correspondientes a cada
+$k=0,1,\dots,N-1$. 
+
+{\bf Importante}. No se trata de programar la suma sino de usar las
+rutinas FFT para hacer el c\'alculo.
+
+
+El objetivo principal es calcular el espectro de potencias, $P$, de
+cada se\~nal. Es decir, calcula la norma al cuadrado de cada
+$\hat{x}_{k}$ en funci\'on de la frecuencia y prepara una gr\'afica de
+$P$  como funci\'on de la frecuenca $f$ para todas las se\~nales. El
+espacio entre cada medici\'on del encefalograma es de 1 minuto. ¿Hay
+alguna diferencia entre el espectro de potencias de cada una de las
+se\~nales?  
+
+
+
+\item 
+Conserve ahora los 10 valores de $\hat{x}_{k}$ que tengan el valor
+m\'as grande de us norma al cuadrado y haga cero el resto. El objetivo
+es reconstruir la se\~nal original a partir de estas 10
+componentes. C\'omo se comparan (por medio de una estad\'istica
+$\chi^2$) la se\~nal reconstruida a partir de la se\~nal original?
+\end{enumerate}
+
+
+\item
+Ahora tienen los datos del n\'umero de manchas solares en funci\'on
+del tiempo en \verb"homework/hw_5/sparse_sample_monthrg.dat". La
+primera columna corresponde al a\~no, la segunda al mes, la tercera al
+n\'umero de d\'ias de datos tomados y la cuarta al promedio de
+manchas. La particularidad de estos datos es que no est\'an espaciados
+homogeneamente en el tiempo.
+\begin{enumerate}
+
+\item
+El primero paso es usar tres m\'etodos de interpolaci\'on (constante, lineal y
+c\'ubica) para conseguir un conjunto de datos equiespaciado en el
+tiempo.
+
+\item
+
+El segundo paso es calcular y graficar los espectros de potencias para
+los datos con los tres tipos de interpolaciones. Son similares o
+diferentes los espectros de potencias? comente sobre las razones para
+las posibles diferencias.
+
+
+\item
+Haga cero todos los valores de $\hat{x}_{k}$ para $k$ menores a lo que
+corresponder\'ia un per\'iodo de $20$ a\~nos y $k$ mayores a lo que
+corresponder\'ia a un per\'ioso de $2$ a\~nos. Con estos datos haga la
+transormada de Fourier inversa para obtener una nueva serie de puntos
+$x^{\prime}_{n}$. El objetivo es preparar una gr\'afica con los nuevos
+puntos y los datos originales, todo en una misma escala de n\'umero
+de manchas solares como funci\'on del tiempo en unidades de a\~nos.
+Los puntos $x^{\prime}_{n}$ deben tener entonces la normalizaci\'on
+adecuada. 
+
+\item 
+Finalmente, el programa debe hacer una estimaci\'on del per\'iodo del
+ciclo solar a partir de los datos anteriores.
+
+
+\end{enumerate}
+\end{enumerate}
+
+
+\end{document}
